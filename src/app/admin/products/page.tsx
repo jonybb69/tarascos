@@ -635,7 +635,7 @@ export default function AdminProductosPage() {
                           const valor = e.target.value
                           const nombreSinExtension = valor.replace(/\.(jpg|jpeg|png|webp)$/i, '')
                           setFormData(prev => ({ ...prev, imagen: nombreSinExtension }))
-                        }}
+                        }} 
                         className="flex-1 px-4 py-3 bg-orange-50 border border-orange-200 rounded-r-xl focus:outline-none focus:ring-2 focus:ring-orange-500"
                         placeholder="nombre-de-la-imagen"
                       />
