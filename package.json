@@ -1,0 +1,39 @@
+{
+  "name": "tarascos",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev --turbopack",
+    "build": "next build --turbopack",
+    "start": "next start"
+  },
+  "dependencies": {
+    "@hookform/resolvers": "^5.2.2",
+    "@prisma/client": "^6.19.0",
+    "axios": "^1.12.2",
+    "classnames": "^2.5.1",
+    "framer-motion": "^12.23.24",
+    "nanoid": "^5.1.6",
+    "next": "^15.5.7",
+    "pg": "^8.16.3",
+    "react": "19.1.0",
+    "react-dom": "19.1.0",
+    "react-hook-form": "^7.65.0",
+    "react-hot-toast": "^2.6.0",
+    "react-icons": "^5.5.0",
+    "sonner": "^2.0.7",
+    "zod": "^4.1.12",
+    "zustand": "^5.0.8"
+  },
+  "devDependencies": {
+    "@types/node": "^20",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "autoprefixer": "^10.4.21",
+    "paquete": "^1.0.0",
+    "postcss": "^8.5.6",
+    "prisma": "^6.17.1",
+    "tailwindcss": "^3.4.18",
+    "typescript": "^5"
+  }
+}

@@ -1,0 +1,66 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Product {
+  id                String         @id @default(cuid())
+  nombre            String
+  descripcion       String
+  precio            Float
+  imagen            String
+  categoryId        String
+  categoria         Categoria      @relation("CategoriaToProductos", fields: [categoryId], references: [id], onDelete: SetNull)
+  destacado         Boolean        @default(false)
+  activo            Boolean        @default(true)
+  stock             Int?           @default(0)
+  tiempoPreparacion Int?           @default(15)
+  ingredients       Json?
+  createdAt         DateTime       @default(now())
+  updatedAt         DateTime       @updatedAt
+
+  sauces            ProductSauce[]
+
+  @@map("products")
+}
+
+model Categoria {
+  id          String    @id @default(cuid())
+  nombre      String    @unique
+  descripcion String
+  color       String
+  icono       String
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+
+  products    Product[] @relation("CategoriaToProductos")
+
+  @@map("categorias")
+}
+
+model Sauce {
+  id        String         @id @default(cuid())
+  nombre    String
+  createdAt DateTime       @default(now())
+  updatedAt DateTime       @updatedAt
+
+  products  ProductSauce[]
+
+  @@map("sauces")
+}
+
+model ProductSauce {
+  id        String   @id @default(cuid())
+  productId String
+  sauceId   String
+
+  product   Product @relation(fields: [productId], references: [id], onDelete: Cascade)
+  sauce     Sauce   @relation(fields: [sauceId], references: [id], onDelete: Cascade)
+
+  @@unique([productId, sauceId])
+  @@map("product_sauces")
+}
